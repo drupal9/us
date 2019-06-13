@@ -1,0 +1,15 @@
+us2e_core.fullcalendar.js:
+  remote: https://github.com/fullcalendar/fullcalendar
+  version: 3.10.0
+  license:
+    name: MIT
+    url: https://fullcalendar.io/license
+    gpl-compatible: true
+  js:
+#    https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js: { type: external, minified: true }
+
+us2e_core.fullcalendar.css:
+  css:
+    theme:
+
+ #     https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.css: { type: external, minified: true }

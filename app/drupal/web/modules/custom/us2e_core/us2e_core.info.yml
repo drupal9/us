@@ -1,0 +1,8 @@
+name: 'us2e core'
+type: module
+description: 'My Awesome Module'
+core: 8.x
+package: 'Custom'
+libraries:
+  - 'us2e_core/us2e_core.fullcalendar.js'
+  - 'us2e_core/us2e_core.fullcalendar.css'
