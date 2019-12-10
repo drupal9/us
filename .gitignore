@@ -50,3 +50,6 @@ npm-debug.log
 
 #sync
 .unison.*
+
+#log
+./log/*

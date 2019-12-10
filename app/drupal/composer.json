@@ -18,11 +18,11 @@
         "drupal/views_slideshow": "^4.6",
         "drupal/business": "^1.7",
         "drupal/metatag": "^1.8",
-        "drupal/rename_admin_paths": "^1.1",
         "drupal/pathauto": "^1.4",
         "drupal/features": "^3.8",
         "drupal/editor_file": "^1.4",
-        "drupal/eu_cookie_compliance": "^1.8"
+        "drupal/eu_cookie_compliance": "^1.8",
+        "drupal/visitors": "^2.4"
     },
     "repositories": {
         "drupal": {
