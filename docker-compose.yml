@@ -6,7 +6,7 @@ services:
     links:
       - mysql
     ports:
-      - "8089:80"
+      - "8088:80"
     volumes:
       - ./docker/etc/apache/drupal.conf:/etc/apache2/sites-enabled/000-default.conf:ro
       - ./docker/etc/php/php.ini:/usr/local/etc/php/php.ini
@@ -51,7 +51,7 @@ services:
         args:
             MYSQL_ROOT_PASSWORD: toto44
     ports:
-      - "3315:3306"
+      - "3319:3306"
     volumes:
       - ./docker/etc/mysql/my.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
       - /var/lib/mysql/
