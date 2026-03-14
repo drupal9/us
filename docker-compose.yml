@@ -1,72 +1,50 @@
-version: '3'
-
 services:
-  apache:
-    build: ./docker/build/apache
-    links:
-      - mysql
-    ports:
-      - "8088:80"
-    volumes:
-      - ./docker/etc/apache/drupal.conf:/etc/apache2/sites-enabled/000-default.conf:ro
-      - ./docker/etc/php/php.ini:/usr/local/etc/php/php.ini
-      - ./docker/etc/php/php-cli.ini:/usr/local/etc/php/php-cli.ini
-      - ./log/apache/drupal:/var/log/apache2
-
-      # drupal root
-      #- ./app/drupal/build:/var/web/app/drupal/build
-      #- ./app/drupal/config:/var/web/app/drupal/config
-      #- ./app/drupal/drush:/var/web/app/drupal/drush
-      #- ./app/drupal/scripts:/var/web/app/drupal/scripts
-      # drupal web dir
-      #- ./app/drupal/web/modules:/var/web/app/drupal/web/modules
-      #- ./app/drupal/web/themes:/var/web/app/drupal/web/themes
-      #- ./app/drupal/web/profiles:/var/web/app/drupal/web/profiles
-      #- ./app/drupal/web/sites:/var/web/app/drupal/web/sites
-      # drupal web files
-      #- ./app/drupal/composer.json:/var/web/app/drupal/composer.json
-      #- ./app/drupal/composer.lock:/var/web/app/drupal/composer.lock
-      #- ./app/drupal/web/index.php:/var/web/app/drupal/web/index.php
-      #- ./app/drupal/web/autoload.php:/var/web/app/drupal/web/autoload.php
-      #- ./app/drupal/load.environment.php:/var/web/app/drupal/load.environment.php
-      #- ./app/drupal/web/update.php:/var/web/app/drupal/web/update.php
-      #- ./app/drupal/web/robots.txt:/var/web/app/drupal/web/robots.txt
-      #- ./app/drupal/web/.htaccess:/var/web/app/drupal/web/.htaccess
-      #*/
-
-      - ./app/drupal:/var/web/app/drupal:cached
-      # drupal vendor
-      - drupal-vendor:/var/web/app/drupal/vendor:delegated
-
-      - ./app/drupal/web/sites/default/files/archive:/var/web/app/drupal/web/sites/default/files/archive
-      ## exclude
-      - /var/web/app/drupal/web/sites/default/files
-      # drupal media files
-      - drupal-files:/var/web/drupal/web/sites/default/files:delegated
-
-  mysql:
+  php:
     build:
-        context: ./docker/build/mysql
-        dockerfile : Dockerfile
-        args:
-            MYSQL_ROOT_PASSWORD: toto44
-    ports:
-      - "3319:3306"
+      context: .
+      dockerfile: ./docker/build/php/Dockerfile
+    container_name: us2php
+    working_dir: /var/www/html
     volumes:
-      - ./docker/etc/mysql/my.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
-      - /var/lib/mysql/
-      - ./data:/data
+      - ./app/drupal:/var/www/html
+      - ./docker/etc/php/php.ini:/usr/local/etc/php/conf.d/custom.ini
     environment:
-      MYSQL_ROOT_PASSWORD: toto44
-      MYSQL_DATABASE: drupal_test
-#    
-#  phpmyadmin:
-#    image: nazarpc/phpmyadmin
-#    links:
-#      - mysql
-#    ports:
-#      - "8002:80"
+      - PHP_MEMORY_LIMIT=512M
+      - PHP_MAX_UPLOAD=32M
+    networks:
+      - us2_net
+
+
+  nginx:
+    image: nginx:alpine
+    container_name: us2nginx
+    depends_on:
+      - php
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app/drupal:/var/www/html
+      - ./docker/etc/nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - us2_net
+
+  db:
+    image: mariadb:11
+    container_name: us2db
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=drupal
+      - MARIADB_USER=drupal
+      - MARIADB_PASSWORD=drupal
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - us2_net
 
 volumes:
-  drupal-vendor:
-  drupal-files:
+  db_data:
+
+networks:
+  us2_net:
+    driver: bridge
+

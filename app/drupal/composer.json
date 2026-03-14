@@ -1,28 +1,13 @@
 {
-    "name": "yzhao/drupal-test",
-    "description": "test drupal 8 with composer",
-    "authors": [
-        {
-            "name": "YannKNX",
-            "email": "yzhao@kernix.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-        "drupal-composer/drupal-scaffold": "^2.0@dev",
-        "composer/installers": "^1.0@dev",
-        "drupal/admin_toolbar": "^1.27",
-        "drupal/redirect": "^1.3",
-        "drupal/business_responsive_theme": "^1.3",
-        "drupal/devel": "^2.1",
-        "drupal/views_slideshow": "^4.6",
-        "drupal/business": "^1.7",
-        "drupal/metatag": "^1.8",
-        "drupal/pathauto": "^1.4",
-        "drupal/features": "^3.8",
-        "drupal/editor_file": "^1.4",
-        "drupal/eu_cookie_compliance": "^1.8",
-        "drupal/visitors": "^2.4"
+    "name": "drupal/cms",
+    "version": "2.0.0",
+    "description": "Drupal CMS is a ready-to-use platform built on Drupal core, offering smart defaults to get started quickly and enterprise-grade tools for marketers, designers, and content creators.",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://www.drupal.org/project/cms",
+    "support": {
+        "docs": "https://new.drupal.org/docs/drupal-cms",
+        "chat": "https://drupal.org/node/314178"
     },
     "repositories": {
         "drupal": {
@@ -30,9 +15,117 @@
             "url": "https://packages.drupal.org/8"
         }
     },
+    "require": {
+        "composer/composer": "^2.8",
+        "composer/installers": "^2.3",
+        "drupal/ai": "^1.3",
+        "drupal/ai_agents": "^1.2",
+        "drupal/ai_dashboard": "^1.0",
+        "drupal/ai_image_alt_text": "^1",
+        "drupal/ai_provider_amazeeio": "^1.2.6",
+        "drupal/ai_provider_anthropic": "^1.1",
+        "drupal/ai_provider_openai": "^1.2",
+        "drupal/automatic_updates": "^4.1",
+        "drupal/autosave_form": "^1.10",
+        "drupal/bpmn_io": "^3",
+        "drupal/byte_theme": "^1",
+        "drupal/canvas": "^1.2",
+        "drupal/captcha": "^2.0.7",
+        "drupal/coffee": "^2",
+        "drupal/core": "^11.3",
+        "drupal/core-composer-scaffold": "11.3.5",
+        "drupal/core-project-message": "11.3.5",
+        "drupal/core-recipe-unpack": "11.3.5",
+        "drupal/core-recommended": "11.3.5",
+        "drupal/core-vendor-hardening": "11.3.5",
+        "drupal/crop": "^2.6",
+        "drupal/cva": "^1",
+        "drupal/dashboard": "^2.2",
+        "drupal/drupal_cms_helper": "^2.0",
+        "drupal/drupical": "^1",
+        "drupal/easy_breadcrumb": "^2.0.9",
+        "drupal/easy_email": "^3.0.2",
+        "drupal/easy_email_theme": "^1",
+        "drupal/eca": "^3.0",
+        "drupal/editoria11y": "^2.2",
+        "drupal/eu_cookie_compliance": "^1.29",
+        "drupal/field_group": "^3.6 || ^4",
+        "drupal/focal_point": "^2.1",
+        "drupal/friendly_captcha_challenge": "^0.9",
+        "drupal/friendlycaptcha": "^1.1",
+        "drupal/gin": "^5",
+        "drupal/gin_login": "^2.1.4",
+        "drupal/google_tag": "^2.0.7",
+        "drupal/honeypot": "^2.1",
+        "drupal/klaro": "^3",
+        "drupal/linkit": "^7.0",
+        "drupal/login_emailusername": "^3",
+        "drupal/mailsystem": "^4",
+        "drupal/media_file_delete": "^1",
+        "drupal/media_library_bulk_upload": "^1",
+        "drupal/menu_link_attributes": "^1.5",
+        "drupal/mercury": "^1",
+        "drupal/metatag": "^2",
+        "drupal/modeler_api": "^1",
+        "drupal/navigation_extra_tools": "^1.3",
+        "drupal/pathauto": "^1.13",
+        "drupal/project_browser": "^2.1-beta3",
+        "drupal/recipe_installer_kit": "^1.0.4",
+        "drupal/redirect": "^1.10",
+        "drupal/sam": "^1.2",
+        "drupal/scheduler": "^2.2",
+        "drupal/scheduler_content_moderation_integration": "^3.0.4",
+        "drupal/search_api": "^1.39",
+        "drupal/search_api_exclude": "^2",
+        "drupal/selective_better_exposed_filters": "^3",
+        "drupal/seo_checklist": "^5.2.1",
+        "drupal/simple_sitemap": "^4.2.2",
+        "drupal/solo": "^1.0",
+        "drupal/svg_image": "^3.1",
+        "drupal/symfony_mailer_lite": "^2.0.1",
+        "drupal/tagify": "^1.2",
+        "drupal/token": "^1.15",
+        "drupal/token_or": "^2.2",
+        "drupal/trash": "^3.0.13",
+        "drupal/ui_icons": "^1.1",
+        "drupal/view_password": "^6",
+        "drupal/views_infinite_scroll": "^2",
+        "drupal/webform": "^6.3-beta3",
+        "drupal/yoast_seo": "^2.1",
+        "league/commonmark": "^2.4"
+    },
+    "require-dev": {
+        "drush/drush": "^13.7"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "drupal/core-recipe-unpack": true,
+            "drupal/core-vendor-hardening": true,
+            "php-http/discovery": true
+        },
+        "bin-dir": "vendor/bin",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
     "extra": {
-        "patchLevel": {
-            "drupal/core": "-p2"
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "web/"
+            },
+            "file-mapping": {
+                "[web-root]/example.gitignore": false
+            },
+            "allowed-packages": [
+                "drupal/drupal_cms_seo_tools"
+            ]
         },
         "installer-paths": {
             "web/core": ["type:drupal-core"],
@@ -40,13 +133,32 @@
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/{$name}": ["type:drupal-drush"]
+            "./drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
+            "web/profiles/custom/{$name}": ["type:drupal-custom-profile"],
+            "./recipes/{$name}": ["type:drupal-recipe"],
+            "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
         },
-        "drupal-scaffold": {
-            "initial": {
-                ".editorconfig": "../.editorconfig",
-                ".gitattributes": "../.gitattributes"
-            }
+        "drupal-core-project-message": {
+            "include-keys": ["homepage", "support"],
+            "post-create-project-cmd-message": [
+                "<bg=blue;fg=white>                                                   </>",
+                "<bg=blue;fg=white>  Congratulations, you’ve installed Drupal CMS!    </>",
+                "<bg=blue;fg=white>                                                   </>",
+                "",
+                "<bg=yellow;fg=black>Next steps</>:",
+                "  * Read the user guide: https://www.drupal.org/docs/user_guide/en/index.html",
+                "  * Get support: https://drupal.org/support",
+                "  * Get involved with the Drupal community: https://drupal.org/getting-involved"
+            ]
+        },
+        "drupal-core-vendor-hardening": {
+            "composer/composer": false
         }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "@php -r \"@unlink('vendor/bin/composer');\""
+        ]
     }
 }
